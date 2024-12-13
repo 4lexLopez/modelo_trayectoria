@@ -9,7 +9,7 @@ from pickle import dump
 from pickle import load
 import numpy as np
 
-GITHUB_LOGO = "MEDIA/github-mark.png"
+GITHUB_LOGO = "media/github-mark.png"
 
 def generarMenu():
     with st.sidebar:
