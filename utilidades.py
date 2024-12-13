@@ -9,13 +9,15 @@ from pickle import dump
 from pickle import load
 import numpy as np
 
+GITHUB_LOGO = "MEDIA/github-mark.png"
+
 def generarMenu():
     with st.sidebar:
+        st.logo(GITHUB_LOGO, link="https://github.com/4lexLopez/modelo_trayectoria", icon_image=None)
         st.header('TRAYECTORIAS ESCOLARES PEREIRA 2019-2024')
         st.page_link('Home.py', label='Inicio', icon='🏠')
         st.page_link('pages/Pronóstico.py', label='Pronóstico Trayectoria', icon='🏫')
-        st.page_link('pages/graficos.py', label='Gráficas', icon='📊')
-
+        st.page_link('pages/presentacion.py', label='Presentación', icon='📊')
 
 def modelo_rf(df_estudiantes_rf):
     #Variable a predecir

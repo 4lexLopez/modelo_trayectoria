@@ -18,9 +18,11 @@ st.title("TRAYECTORIAS EDUCATIVAS INSTITUCIONES OFICIALES ETC PEREIRA GRADOS 6 A
 
 st.write("""
 El presente informe tiene como objetivo proporcionar un análisis exhaustivo de las trayectorias escolares de los estudiantes de las instituciones educativas de Pereira, identificando patrones y desafíos clave que afectan la continuidad y calidad del proceso educativo.
-A través del estudio de indicadores críticos como la tasa de permanencia escolar, la distribución socioeconómica, la representación por género y las necesidades especiales, se busca comprender las barreras y oportunidades existentes en el sistema educativo.om Forest).
+A través del estudio de indicadores críticos como la tasa de permanencia escolar, la distribución socioeconómica, la representación por género y las necesidades especiales, se busca comprender las barreras y oportunidades existentes en el sistema educativo.
 
 Los datos del desarrollo del proyecto se encuentran en la carpeta en linea:\n\n https://drive.google.com/drive/folders/1k3iyfL6nrD63zOpN1jH6d3R2ARqXgo4h?usp=sharing
+         
+Enlace github del despliegue:\n\n https://github.com/4lexLopez/modelo_trayectoria
 """
          )
 
