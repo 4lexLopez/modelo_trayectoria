@@ -11,8 +11,8 @@ import plotly.express as px
 
 #Congigurar la página principal
 st.set_page_config(
-    page_title="SMEC",
-    page_icon=":heartpulse:",
+    page_title="TRAYECTORIAS EDUCATIVAS PEREIRA - graficos",
+    page_icon=":school:",
     initial_sidebar_state="expanded",
     layout="centered"
 )
@@ -23,7 +23,7 @@ util.generarMenu()
 #título
 st.title("TRAYECTORIAS EDUCATIVAS INSTITUCIONES OFICIALES ETC PEREIRA GRADOS 6 A 11")
 
-df = pd.read_csv("data/resultado_comparacion_completa_valores.csv", index_col=0)
+df = pd.read_csv("data/DatosFinales_Trayectoria_Estudiante.csv", index_col=0)
 
 #selector de gráficos
 st.header('Visualizador de Gráficos')
@@ -31,21 +31,21 @@ tipo = st.selectbox('Seleccione el tipo de gráfico',
                     ['Barras','Líneas','Dispersión'])
 #selector de las variables a comparar
 variable = st.selectbox('Seleccione la variable a comparar',
-                        df.columns[1:].values)
+                        df.columns[1:23].values)
 
 #después de seleccionar
 if tipo == 'Barras':
-    fig = px.bar(df,x='Terminó la trayectoria escolar',
+    fig = px.bar(df,x='Id_genero',
                  y=variable, barmode='group',
-    title=f'Estudiante en el grado {variable}')
+    title=f'Estudiante en el {variable}')
 elif tipo == 'Líneas':
-    fig = px.line(df,x='Terminó la trayectoria escolar',
+    fig = px.line(df,x='mensaje_1',
                  y=variable,
-    title=f'Estudiante en el grado {variable}')
+    title=f'Estudiante en el {variable}')
 elif tipo == 'Dispersión':
-    fig = px.scatter(df,x='Terminó la trayectoria escolar',
+    fig = px.scatter(df,x='mensaje_1',
                  y=variable,
-    title=f'Estudiante en el grado {variable}')
+    title=f'Estudiante en el {variable}')
 
 
 st.plotly_chart(fig)

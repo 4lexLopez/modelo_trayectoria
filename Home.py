@@ -6,7 +6,7 @@ import utilidades as util
 
 #Congigurar la página principal
 st.set_page_config(
-    page_title="TRAYECTORIAS EDUCATIVAS PEREIRA",
+    page_title="TRAYECTORIAS EDUCATIVAS PEREIRA - inicio",
     page_icon="📊",
     initial_sidebar_state="expanded",
     layout="centered"

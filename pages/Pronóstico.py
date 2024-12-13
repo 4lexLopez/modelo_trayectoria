@@ -11,8 +11,8 @@ import numpy as np
 
 #Configuramos la página
 st.set_page_config(
-    page_title="SMEC",
-    page_icon=":heartpulse:",
+    page_title="TRAYECTORIAS EDUCATIVAS PEREIRA - pronostico",
+    page_icon=":school:",
     initial_sidebar_state="expanded",
     layout="centered"
 )
