@@ -22,6 +22,7 @@ def modelo_rf(df_estudiantes_rf):
     Y = df_estudiantes_rf.iloc[:,9]
     #Variables predictoras
     X = df_estudiantes_rf.iloc[:,2:8] 
+    # st.write(X.columns.values)
     #Variables de prueba  ->  prueba
     #Variables de entrenamiento -> entrenar
     X_entrenar, X_prueba, Y_entrenar, Y_prueba = train_test_split(X, Y, train_size=0.8, random_state=0)
@@ -58,7 +59,7 @@ def modelo_rf(df_estudiantes_rf):
     #st.write(bosque.get_params())  
 
     #guardar el modelo
-    archivo_modelo = open('data/modelo_rf.sav', 'wb')  
+    archivo_modelo = open('data/modelo_arbol_decision.sav', 'wb')  
     dump(bosque, archivo_modelo)
     archivo_modelo.close()
 
@@ -67,6 +68,10 @@ def modelo_rf(df_estudiantes_rf):
 def prueba_modelo(arreglo):
     modelo_cargado = load(open('data/modelo_arbol_decision.sav', 'rb'))
     prediccion_rf = modelo_cargado.predict(arreglo)
+    if prediccion_rf[0] == 0:
+        prediccion = 'NO'
+    else:
+        prediccion = 'SI'
     st.subheader('**Predicción de la trayectoria del estudiante')
     st.write('Predicción')
-    st.write(f'El estudiante ingresado de acuerdo a los datos hallados {prediccion_rf[0]} padece de SMEC')
+    st.write(f'El estudiante ingresado de acuerdo a los datos hallados {prediccion} finalizo la trayectoria')
