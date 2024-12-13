@@ -47,6 +47,8 @@ with st.sidebar:
 # lógica de la predicción
 # lista = [6,7,8,999,999,999]
 lista = [grado2019,grado2020,grado2021,grado2022,grado2023,grado2024]
+# lista2 = [6,7,8,9,10,11]
+st.write(lista)
 
 # convertimos los strings en enteros
 integer_list = []
@@ -56,7 +58,7 @@ for s in lista:
 
 
 if btn_ejecutar == True:
-    arr = np.array([integer_list])
+    arr = np.array([lista])
     # arr = np.array([lista])
     st.write(arr)
     util.prueba_modelo(arr)

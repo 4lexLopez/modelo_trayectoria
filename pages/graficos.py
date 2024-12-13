@@ -21,9 +21,9 @@ st.set_page_config(
 util.generarMenu()
 
 #título
-st.title("SMEC - Síndrome Metabólico de Enfermedad Cardiovascular")
+st.title("TRAYECTORIAS EDUCATIVAS INSTITUCIONES OFICIALES ETC PEREIRA GRADOS 6 A 11")
 
-df = pd.read_csv("data/Datos_Pacientes.csv", index_col=0)
+df = pd.read_csv("data/resultado_comparacion_completa_valores.csv", index_col=0)
 
 #selector de gráficos
 st.header('Visualizador de Gráficos')
@@ -35,17 +35,17 @@ variable = st.selectbox('Seleccione la variable a comparar',
 
 #después de seleccionar
 if tipo == 'Barras':
-    fig = px.bar(df,x='Enfermedad',
+    fig = px.bar(df,x='Terminó la trayectoria escolar',
                  y=variable, barmode='group',
-    title=f'Pacientes con o sin SMEC que presentan {variable}')
+    title=f'Estudiante en el grado {variable}')
 elif tipo == 'Líneas':
-    fig = px.line(df,x='Enfermedad',
+    fig = px.line(df,x='Terminó la trayectoria escolar',
                  y=variable,
-    title=f'Pacientes con o sin SMEC que presentan {variable}')
+    title=f'Estudiante en el grado {variable}')
 elif tipo == 'Dispersión':
-    fig = px.scatter(df,x='Enfermedad',
+    fig = px.scatter(df,x='Terminó la trayectoria escolar',
                  y=variable,
-    title=f'Pacientes con o sin SMEC que presentan {variable}')
+    title=f'Estudiante en el grado {variable}')
 
 
 st.plotly_chart(fig)

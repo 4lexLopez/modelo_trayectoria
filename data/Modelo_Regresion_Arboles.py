@@ -2,23 +2,23 @@ import pandas as pd
 
 
 # Cargar el archivo CSV (reemplaza 'ruta/a/tu/archivo.csv' con la ubicación real de tu archivo)
-data = pd.read_csv('resultado_comparacion_completa.csv')
+data = pd.read_csv('resultado_comparacion_completa_valores.csv')
 
 # Ver las primeras filas para inspeccionar los datos
 print(data.head())
 
 # Crear la variable dependiente 'abandono' basada en la columna 'trayectoria'
-data['abandono'] = data['mensaje_trayectoria'].apply(lambda x: 0 if x == 'TRAYECTORIA' else 1)
+data['abandono'] = data['mensaje_1'].apply(lambda x: 0 if x == 1 else 1)
 
 # Convertir la columna 'mensMensaje_Comparacionaje' en una variable categórica:
 # 'igual' -> 0 (no cambió de colegio), 'diferente' -> 1 (cambió de colegio)
-data['mensaje'] = data['Mensaje_Comparacion'].apply(lambda x: 0 if x == 'IGUAL' else 1)
+data['mensaje'] = data['Mensaje_Comparacion'].apply(lambda x: 0 if x == 0 else 1)
 
 # Verificamos cómo quedaron las columnas
-print(data[['Mensaje_Comparacion', 'mensaje_trayectoria', 'abandono']].head())
+print(data[['Mensaje_Comparacion', 'mensaje_1', 'abandono']].head())
 
 # Variables independientes: grados de los años (2019-2024)
-X = data[['Grado_2019', 'Grado_2020', 'Grado_2021', 'Grado_2022', 'Grado_2023', 'Grado_2024', 'mensaje']]  # Años de los grados y mensaje
+X = data[['Grado_2019', 'Grado_2020', 'Grado_2021', 'Grado_2022', 'Grado_2023', 'Grado_2024']]  # Años de los grados y mensaje
 y = data['abandono']  # Variable dependiente: abandono (1 si abandonó, 0 si completó)
 
 # Dividir los datos en entrenamiento y prueba (80% entrenamiento, 20% prueba)
@@ -31,7 +31,7 @@ print(f"Datos de entrenamiento: {X_train.shape[0]}")
 print(f"Datos de prueba: {X_test.shape[0]}")
 
 
-# Regresión Logística:
+#Regresión Logística:
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, classification_report
 
@@ -60,6 +60,19 @@ y_pred_arbol = modelo_arbol.predict(X_test)
 print("Precisión Árbol de Decisión:", accuracy_score(y_test, y_pred_arbol))
 print(classification_report(y_test, y_pred_arbol))
 
+import joblib
+
+try:
+    # Guardar el modelo de regresión logística en formato .sav
+    joblib.dump(modelo_logistico, 'modelo_logistico.sav')
+    
+    # Guardar el modelo de árbol de decisión en formato .sav
+    joblib.dump(modelo_arbol, 'modelo_arbol_decision.sav')
+    
+    print("Modelos guardados exitosamente en formato .sav.")
+except Exception as e:
+    print(f"Error al guardar los modelos: {e}")
+
 #Visualización del Árbol de Decisión (Opcional):
 
 import matplotlib.pyplot as plt
@@ -69,3 +82,4 @@ from sklearn.tree import plot_tree
 plt.figure(figsize=(12, 8))
 plot_tree(modelo_arbol, filled=True, feature_names=X.columns, class_names=['No abandono', 'Abandono'], rounded=True)
 plt.show()
+
